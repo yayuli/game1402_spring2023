@@ -16,11 +16,18 @@ public class PlayerController : MonoBehaviour
     float jumpHeight = 15.0f;
     [SerializeField]
     float invert = 1.0f;
+
+    //animation changes
+    private const float ANIMATOR_SMOOTHING = 0.4f;
+    private const float RAYCAST_LENGTH = 0.3f;
+    private Vector3 animatorInput;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         playerCam = GetComponentInChildren<Camera>(); //This gets us the camera
         camContainer = playerCam.transform.parent; //this gets us the camera's parent's transform
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +40,26 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 input = new Vector3(horizontal, 0, vertical).normalized * speed;
+        animatorInput = Vector3.Lerp(animatorInput, input, ANIMATOR_SMOOTHING);
+        animator.SetFloat("HorizontalSpeed", animatorInput.x);
+        animator.SetFloat("VerticalSpeed", animatorInput.z);
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            Debug.Log("Jump jump. Kriss kross will make you jump jump");
+            input.y = jumpHeight;
+            animator.SetTrigger("Jumping");
+        }
+        else
+        {
+            input.y = GetComponent<Rigidbody>().velocity.y; //our jump velocity if we are not triggering a new jump is the current rigid body velocity based on its interaction with gravity
+        }
         GetComponent<Rigidbody>().velocity = transform.TransformVector(input);
+    }
+    private bool IsGrounded() //we want to figure out if our character is on the ground or not
+    {
+        Vector3 origin = transform.position;//this is where our character begins
+        origin.y += RAYCAST_LENGTH * 0.5f;
+        LayerMask mask = LayerMask.GetMask("Terrain");
+        return Physics.Raycast(origin, Vector3.down, RAYCAST_LENGTH, mask);
     }
 }
