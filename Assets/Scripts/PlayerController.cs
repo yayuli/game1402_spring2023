@@ -53,6 +53,10 @@ public class PlayerController : MonoBehaviour
         {
             input.y = GetComponent<Rigidbody>().velocity.y; //our jump velocity if we are not triggering a new jump is the current rigid body velocity based on its interaction with gravity
         }
+        if (Input.GetButtonDown("Fire2"))
+        {
+            animator.SetTrigger("Taunt");
+        }
         GetComponent<Rigidbody>().velocity = transform.TransformVector(input);
     }
     private bool IsGrounded() //we want to figure out if our character is on the ground or not
