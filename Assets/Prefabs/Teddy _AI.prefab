@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8858289208957109776}
   - component: {fileID: 8858289208952330038}
+  - component: {fileID: 3815320488644141288}
   m_Layer: 0
   m_Name: Eye_Right
   m_TagString: Untagged
@@ -346,6 +347,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.27480978, y: 0.29815957, z: -0.18151204}
     m_Extent: {x: 0.06373186, y: 0.044872433, z: 0.06319316}
   m_DirtyAABB: 0
+--- !u!114 &3815320488644141288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858289208957540912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41e365377e38494b97801c1af75121e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8858289208957540914
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +478,7 @@ GameObject:
   - component: {fileID: 8469971815583053505}
   - component: {fileID: 4283690655870046534}
   - component: {fileID: 3494037293818997592}
+  - component: {fileID: 8327186948378041015}
   m_Layer: 0
   m_Name: Teddy _AI
   m_TagString: Untagged
@@ -564,6 +578,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8327186948378041015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858289208957540916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c6aca909546d04183db060946896f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullHealth: 100
+  team: 0
+  health: 0
+  damage: 10
 --- !u!1 &8858289208957540918
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8858289208957109782}
   - component: {fileID: 8858289208952330036}
+  - component: {fileID: 5330870493520959549}
   m_Layer: 0
   m_Name: Eye_Left
   m_TagString: Untagged
@@ -650,6 +681,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.27480978, y: 0.29563007, z: 0.18087713}
     m_Extent: {x: 0.06373186, y: 0.044872463, z: 0.06319316}
   m_DirtyAABB: 0
+--- !u!114 &5330870493520959549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858289208957540918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41e365377e38494b97801c1af75121e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8858289208957540920
 GameObject:
   m_ObjectHideFlags: 0

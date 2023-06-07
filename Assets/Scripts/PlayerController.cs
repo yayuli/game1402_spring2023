@@ -19,6 +19,7 @@ public class PlayerController : Unit
 
     //animation changes
     private const float ANIMATOR_SMOOTHING = 0.4f;
+    private const float DISTANCE_LASER_IF_NO_HIT = 500.0f;
 
     private Vector3 animatorInput;
 
@@ -53,6 +54,22 @@ public class PlayerController : Unit
         else
         {
             input.y = GetComponent<Rigidbody>().velocity.y; //our jump velocity if we are not triggering a new jump is the current rigid body velocity based on its interaction with gravity
+        }
+        if (Input .GetButtonDown ("Fire1"))
+        {
+            Ray ray = new Ray(GetEyesPosition(), playerCam.transform.forward);
+            RaycastHit hit;
+            LayerMask mask = ~LayerMask.GetMask("Outpost", "Teddy", "Terrain");
+            if(Physics.Raycast (ray,out hit , Mathf .Infinity,mask))
+            {
+                ShootAt(hit);
+            }
+            else
+            {
+                Vector3 targetPos = playerCam.transform.position + playerCam.transform.forward * DISTANCE_LASER_IF_NO_HIT;
+                ShowLasers(targetPos);
+            }
+            
         }
         if (Input.GetButtonDown("Fire2"))
         {

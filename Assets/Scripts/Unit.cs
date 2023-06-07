@@ -18,15 +18,57 @@ public class Unit : MonoBehaviour
     int damage = 10;
     private const float RAYCAST_LENGTH = 0.3f;
     protected Rigidbody rb;
+    private Color myColor;
+    [SerializeField]
+    Laser laserPrefab;
+
+    private Eye[] eyes = new Eye[2];
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
+        eyes = GetComponentsInChildren<Eye>();
+        myColor = GameManager.Instance.teams[team];
+        transform.Find("Teddy_Body").GetComponent<SkinnedMeshRenderer>().material.color = myColor;
     }
     public int Team
     {
         get
         {
             return team;
+        }
+    }
+    protected virtual void OnHit(Unit attacker )
+    {
+        Debug.Log("Ouchie");
+        health -= attacker.damage;
+        if(health<=0)
+        {
+
+        }
+    }
+    protected Vector3 GetEyesPosition()
+    {
+        return (eyes[0].transform.position + eyes[1].transform.position) / 2.0f;
+    }
+    protected void ShootAt(RaycastHit hit)
+    {
+        Unit unit = hit .transform .GetComponent<Unit>();
+        if(unit != null )
+        {
+            if (unit.team !=Team)
+            {
+                unit.OnHit(this);
+                ShowLasers(hit.point);
+            }
+            
+        }
+    }
+    protected void ShowLasers (Vector3 targetPosition)
+    {
+        foreach(Eye eye in eyes)
+        {
+            Laser laser = Instantiate(laserPrefab) as Laser;
+            laser.Init(Color.red, eye.transform.position, targetPosition);
         }
     }
     // Update is called once per frame
