@@ -18,9 +18,9 @@ public class Unit : MonoBehaviour
     int damage = 10;
     private const float RAYCAST_LENGTH = 0.3f;
     protected Rigidbody rb;
-    void Start()
+    protected virtual void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
     public int Team
     {
