@@ -20,7 +20,7 @@ public class Laser : MonoBehaviour
         Line.SetPosition(1, end);
         Line.startColor = c;
         Line.endColor = c;
-        Invoke("DestroMe", lifeTime );
+        Invoke("DestroyMe", lifeTime );
     }
     private void DestroyMe ()
     {

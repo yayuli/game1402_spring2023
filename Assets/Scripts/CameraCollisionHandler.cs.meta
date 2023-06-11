@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: ceee15e7ff8a8e349a1b090d533f1ff6
+guid: 576ea70f86b9e924eb9a424d8d199e34
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - laserPrefab: {fileID: 2027545767685364726, guid: b889e9cb42b0c114a911200bda743a20, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
